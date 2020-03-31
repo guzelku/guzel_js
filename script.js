@@ -21,7 +21,7 @@ console.log(addExpenses.length);
 console.log(addExpenses.toLocaleLowerCase());
 console.log(addExpenses.split(', '));*/
 
-money=prompt('Ваш месячный доход?');
+money=+prompt('Ваш месячный доход?');
 console.log(money);
 
 deposit=confirm('Есть ли у вас депозит в банке?');

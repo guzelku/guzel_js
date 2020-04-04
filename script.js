@@ -29,7 +29,7 @@ console.log(addExpenses.toLowerCase().split(','));
 let start = function(){
 do
 {
-money=prompt('Ваш месячный доход?');
+money=+prompt('Ваш месячный доход?');
 }
 while (!isNumber( money));
 }

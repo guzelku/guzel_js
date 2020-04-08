@@ -75,54 +75,56 @@ let appData ={
 
                     appData.budgetMonth=appData.budget-appData.expensesMonth;//Накопления за месяц 
     
-                   // console.log('Накопления за месяц '+' '+appData.budgetMonth);
+                    console.log('Накопления за месяц '+' '+appData.budgetMonth);
 
                     appData.budgetDay = appData.budgetMonth/30;//бюджет на день накопления
     
-               // console.log('бюджет на день '+' '+Math.floor(appData.budgetDay));
+                console.log('бюджет на день '+' '+Math.floor(appData.budgetDay));
     
                     }
                     appData.getBudget(); 
                     
                    
 
+                },
+
+                /**достижение цели */
+                getTargetMonth:function(){
+                if (Math.ceil (appData.mission/appData.budgetMonth) <0) {console.log('цель не будет достигнута') ; }
+                else {
+                console.log('цель будет достигнута за'+' '+Math.ceil (appData.mission/appData.budgetMonth)+' '+'месяцев') ;
                 }
-                         
+                },
+
+
+                /** уровень дохода*/
+                getStatusIncome: function() {
+                    if(appData.budgetDay>1200){return ('У вас высокий уровень дохода');}
+                    else
+                    if(appData.budgetDay>600 && appData.budgetDay<=1200)
+                    {return ('У вас средний уровень дохода');}
+                    else
+                    if(appData.budgetDay>0 && appData.budgetDay<=600)
+                    {return ('К сожалению у вас уровень дохода ниже среднего');}
+                    else
+                    {return ('Что то пошло не так');}
+                    }
+                                    
+              
              
         }
 
 
 appData.asking();
 
-
-
-
-
-
-/**Достижение цели миссия/накопления  если<>0 */
-
-appData.getTargetMonth=function(){
-if (Math.ceil (appData.mission/appData.budgetMonth) <0) {console.log('цель не будет достигнута') ; }
-else {
-console.log('цель будет достигнута за'+' '+Math.ceil (appData.mission/appData.budgetMonth)+' '+'месяцев') ;
-}
-}
  
 appData.getTargetMonth();
 
 
-
-/** уровень дохода*/
-appData.getStatusIncome = function() {
-if(appData.budgetDay>1200){return ('У вас высокий уровень дохода');}
-else
-if(appData.budgetDay>600 && appData.budgetDay<=1200)
-{return ('У вас средний уровень дохода');}
-else
-if(appData.budgetDay>0 && appData.budgetDay<=600)
-{return ('К сожалению у вас уровень дохода ниже среднего');}
-else
-{return ('Что то пошло не так');}
-}
-
 console.log(appData.getStatusIncome());
+
+
+for(let key in appData ){
+    console.log ('Наша программа включает в себя: ');//
+    console.log ( key + ': '+ appData[key]);//
+    }

@@ -1,4 +1,4 @@
-' use strict';
+'use strict';
 let isNumber = function(n)
 {
 
@@ -11,7 +11,7 @@ let start = function(){
     money=prompt('Ваш месячный доход?',50000);
     }
     while (!isNumber( money));
-    }
+    };
     
     start();
 
@@ -46,7 +46,7 @@ let appData ={
 
               for(let i=0; i<2; i++){
 
-                  exp = prompt('Введите обязательнуб статью расходов', 'школа');
+                let  exp = prompt('Введите обязательнуб статью расходов', 'школа');
                  
                   question=prompt('Во сколько это обойдется?',2000);
                                                  
@@ -54,14 +54,14 @@ let appData ={
                 {
                   question=+prompt('Во сколько это обойдется?');
                  }
-                sum +=+question;
-                appData.expenses.exp=question; 
+               
+                appData.expenses[exp]=+question; 
                }
                
               },
    getExpensesMonth:function(){
                   for(let key in appData.expenses ){
-                    console.log ( exp + ': '+ appData.expenses[key]);//вывод расходов
+                    console.log ( 'расходы:  '+ appData.expenses[key]);//вывод расходов
                       
                     appData.expensesMonth += +appData.expenses[key] ;// суммируем расходы
                     }
@@ -81,7 +81,7 @@ let appData ={
                   },
                 /**достижение цели */
                 getTargetMonth:function(){
-                if (Math.ceil (appData.mission/appData.budgetMonth) <0) {console.log('цель не будет достигнута') ; }
+                if (appData.mission/appData.budgetMonth) <0) {console.log('цель не будет достигнута') ; }
                 else {
                 console.log('цель будет достигнута за'+' '+Math.ceil (appData.mission/appData.budgetMonth)+' '+'месяцев') ;
                 }
@@ -103,7 +103,7 @@ let appData ={
                                     
               
              
-        }
+        };
 
 
 appData.asking();
@@ -120,6 +120,6 @@ console.log(appData.getStatusIncome());
 for(let key in appData ){
    
     console.log ( key + ': '+ appData[key]);//
-    }
+    };
 
 

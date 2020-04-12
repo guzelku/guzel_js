@@ -22,7 +22,7 @@ const body = document.querySelector('body');
 body.style.backgroundImage='url(./image/you-dont-know-js.jpg)';
 
 const adv = document.querySelector('.adv');
-adv.classList.remove('adv');
+adv.remove('adv');
 
 const a = document.querySelectorAll('h2 a');
 a[2].textContent = 'Книга 3. this и Прототипы Объектов';

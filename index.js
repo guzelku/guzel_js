@@ -23,8 +23,14 @@ let plus2=document.getElementsByTagName('button')[1];
  /*Каждый элемент в правой части программы через класс,
   которые имеют в имени класса "-value", начиная с class=budget_day-value
    и заканчивая class="target_month-value"*/
-   let value=document.querySelectorAll('.result .result-total');
-   console.log(value);
+ let budgetDayValue=document.getElementsByClassName('.budget_day-value')[0];
+let budgetMonthValue=document.getElementsByClassName('.budget_month-value')[0];
+let expensesMonthValue=document.getElementsByClassName('.expenses_month-value')[0];
+
+let additionalIncomeValue=document.getElementsByClassName('.additional_income-value')[0];
+let additionalExpensesValue=document.getElementsByClassName('.additional_expenses-value')[0];
+let incomePeriodValue=document.getElementsByClassName('.income_period-value')[0];
+let targetMonthValue=document.getElementsByClassName('.target_month-value')[0];
 
    /**Оставшиеся поля через querySelector каждый в отдельную переменную:
 

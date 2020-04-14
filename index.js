@@ -15,6 +15,8 @@ let plus2=document.getElementsByTagName('button')[1];
  //Чекбокс по id через querySelector
  let checkbox=document.querySelector('#deposit-check');
  console.log(checkbox);
+let checkbox2=document.querySelector('.deposit-checkmark');
+ console.log(checkbox2);
 
  //Поля для ввода возможных доходов (additional_income-item) при помощи querySelectorAll
  let additional=document.querySelectorAll('.additional_income-item');

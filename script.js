@@ -67,11 +67,12 @@ let appData ={
 
  let res1= prompt('Перечислите  возможные расходы через запятую:','интернет, такси, коммуналка');
      
-      appData.addExpenses= res1.split(', ');
+      appData.addExpenses= res1.split(',');
       
       let res=[];
 
       appData.addExpenses.forEach (function(item) {
+           item = item.trim();
       res.push(item.charAt(0).toUpperCase() + item.substr(1).toLowerCase());
       });
       console.log(res.join(', '));

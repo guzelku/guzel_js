@@ -132,6 +132,15 @@ addBlocking: function(){
       start.removeAttribute('disabled');
    }
  },
+ ready: function(){
+   if(salaryAmount.value ===''){
+      start.setAttribute('disabled', true);
+   }
+   else 
+   {
+      start.removeAttribute('disabled');
+   }
+ },
 
 
 
@@ -250,6 +259,8 @@ addBlocking: function(){
 
 salaryAmount.addEventListener('input', appData.addBlocking);
 
+
+window.addEventListener("load", appData.ready);
 
 start.addEventListener('click', appData.start );
 

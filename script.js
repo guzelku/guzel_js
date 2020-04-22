@@ -79,10 +79,12 @@ AppData.prototype.start= function(){
 
     this.showResult();
    };
-
+  
    AppData.prototype.showResult= function(){
   
     budgetMonthValue.value = this.budgetMonth;
+ 
+    
     budgetDayValue.value = this.budgetDay;
     expensesMonthValue.value = this.expensesMonth;
     additionalExpensesValue.value = this.addExpenses.join(', ');
@@ -91,11 +93,11 @@ AppData.prototype.start= function(){
     incomePeriodValue.value = this.calsSavedMoney();
 
     
-    periodSelect.addEventListener('input',this.addPeriod2);
+    periodSelect.addEventListener('input',this.addPeriod2.bind(this));
 
    
      };
-
+    
      AppData.prototype.reset=function(){
 
 this.addCancel2();
@@ -157,8 +159,11 @@ AppData.prototype.addPeriod= function(){
 
                    periodAmount.innerHTML=periodSelect.value;
                    };
-                   
+
+
 AppData.prototype.addPeriod2 = function(){
+
+  
 
                       incomePeriodValue.value=this.budgetMonth * periodSelect.value;
 
@@ -263,6 +268,7 @@ AppData.prototype.getIncome= function(){
               AppData.prototype.getBudget= function(){
 
                 this.budgetMonth=this.budget + this.incomeMonth-this.expensesMonth;//Накопления за месяц 
+                console.log(this.budgetMonth);
                 this.budgetDay = Math.floor(this.budgetMonth/30);//бюджет на день накопления
                 };
 
@@ -318,8 +324,8 @@ AppData.prototype.getIncome= function(){
 
    window.addEventListener("load", this.addBlocking);
    
-   start.addEventListener('click', this.start.bind (this) );//ПРОБЛЕМА
-   cancel.addEventListener('click', this.reset.bind (this) );
+   start.addEventListener('click', this.start.bind(this) );
+   cancel.addEventListener('click', this.reset.bind(this) );
    
    
    incomePlus.addEventListener('click', this.addIncomeBlock);

@@ -82,7 +82,7 @@ start(){
 
    this.getBudget();
    this.addBlocking();
-    
+   this.addBlocking2();
    this.addCancel();
 
    this.showResult();
@@ -99,7 +99,8 @@ start(){
     incomePeriodValue.value = this.calsSavedMoney();
 
     
-    periodSelect.addEventListener('input',this.addPeriod2);
+    periodSelect.addEventListener('input',this.addPeriod2.bind (this));
+
 
    
      }
@@ -115,6 +116,7 @@ incomePlus.style.display='initial';
 expensesPlus.style.display='initial';
 document.querySelectorAll('.clone').forEach(function(item){item.remove();});
 document.getElementById('deposit-check').checked = false;
+this.depositHandler();
 }
 
 
@@ -174,16 +176,38 @@ else
 }
 
 addBlocking2(){
-   if(!isNumber(depositPercent.value) || depositPercent.value < 0 || depositPercent.value > 100){
+
+   if(depositCheck.checked){
+       if((!isNumber(depositPercent.value) || depositPercent.value < 0 || depositPercent.value > 100)){
       alert('введите число от 0 до 100');
-   
+      depositPercent.value='';
     start.setAttribute('disabled', true);
    }
    else 
-   {
-    start.removeAttribute('disabled');
+   {if( salaryAmount.value ===''){
+      start.setAttribute('disabled', true);
    }
+   else{start.removeAttribute('disabled');
+}}
+   
    }
+ 
+  else{
+   console.log('uncheck');
+   depositAmount.style.display='none';
+   depositBank.style.display='none';
+      depositPercent.style.display='none';
+      depositBank.value='';
+      depositAmount.value='';
+      this.deposit=false;
+      depositBank.removeEventListener('change', this.changePersent);
+
+  } }
+
+
+
+
+  
    
 
 addCancel(){
@@ -340,6 +364,7 @@ getIncome(){
                  }
                  else{
                   console.log('uncheck');
+                  depositAmount.style.display='none';
                   depositBank.style.display='none';
                      depositPercent.style.display='none';
                      depositBank.value='';
@@ -358,7 +383,7 @@ eventsListeners(){
 
    window.addEventListener("load", this.addBlocking);
    
-   start.addEventListener('click', this.start.bind (this) );//ПРОБЛЕМА
+   start.addEventListener('click', this.start.bind (this) );
    cancel.addEventListener('click', this.reset.bind (this) );
    
    
@@ -369,7 +394,7 @@ eventsListeners(){
    periodSelect.addEventListener('input',this.addPeriod);
    depositCheck.addEventListener('change', this.depositHandler.bind(this));
    
-   depositPercent.addEventListener('input',this.addBlocking2 );
+   depositPercent.addEventListener('input',this.addBlocking2.bind(this) );
                 
 }}
 const newData = new AppData();  
